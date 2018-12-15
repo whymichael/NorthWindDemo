@@ -43,6 +43,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -171,35 +173,74 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="PresentionLayer\Controllers\HomeController.cs" />
+    <Compile Include="BusinessLayer\CategoriesBL.cs" />
+    <Compile Include="Controllers\CategoriesController.cs" />
+    <Compile Include="DataAccessLayer\CategoriesDAL.cs" />
+    <Compile Include="Models\Entities\Categories.cs">
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\NorthWind.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWind.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\NorthWind.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Entities\NorthWind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ServicesLayer\CategoriesController.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\NORTHWND.MDF" />
-    <Content Include="PresentionLayer\Content\bootstrap.css" />
-    <Content Include="PresentionLayer\Content\bootstrap.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
-    <Content Include="PresentionLayer\Content\Site.css" />
-    <Content Include="PresentionLayer\Scripts\bootstrap.js" />
-    <Content Include="PresentionLayer\Scripts\bootstrap.min.js" />
-    <None Include="PresentionLayer\Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="PresentionLayer\Scripts\jquery-1.10.2.js" />
-    <Content Include="PresentionLayer\Scripts\jquery-1.10.2.min.js" />
-    <None Include="PresentionLayer\Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="PresentionLayer\Scripts\jquery.validate.js" />
-    <Content Include="PresentionLayer\Scripts\jquery.validate.min.js" />
-    <Content Include="PresentionLayer\Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="PresentionLayer\Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="PresentionLayer\Scripts\modernizr-2.6.2.js" />
-    <Content Include="PresentionLayer\Scripts\respond.js" />
-    <Content Include="PresentionLayer\Scripts\respond.min.js" />
-    <Content Include="PresentionLayer\Scripts\_references.js" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\Entities\NorthWind.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>NorthWind.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Entities\NorthWind.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+      <LastGenOutput>NorthWind.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\Entities\NorthWind.edmx.diagram">
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Entities\NorthWind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>NorthWind.edmx</DependentUpon>
+      <LastGenOutput>NorthWind.cs</LastGenOutput>
+    </Content>
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\_references.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -207,21 +248,20 @@
     <Content Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="PresentionLayer\Views\Web.config" />
-    <Content Include="PresentionLayer\Views\_ViewStart.cshtml" />
-    <Content Include="PresentionLayer\Views\Shared\Error.cshtml" />
-    <Content Include="PresentionLayer\Views\Shared\_Layout.cshtml" />
-    <Content Include="PresentionLayer\Views\Home\About.cshtml" />
-    <Content Include="PresentionLayer\Views\Home\Contact.cshtml" />
-    <Content Include="PresentionLayer\Views\Home\Index.cshtml" />
-    <Content Include="PresentionLayer\Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Categories\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BusinessLayer\Repository\" />
     <Folder Include="DataAccessLayer\Repository\" />
-    <Folder Include="Models\Entities\" />
     <Folder Include="Models\ViewModels\" />
-    <Folder Include="ServicesLayer\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -229,6 +269,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -248,7 +291,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50008</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50008/</IISUrl>
+          <IISUrl>http://localhost:50088/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

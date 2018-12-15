@@ -1,0 +1,35 @@
+﻿@model IEnumerable<NorthwindWebApp.Models.Entities.Categories>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("新增", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.CategoryID }) |
+                @*@Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |*@
+                @Html.ActionLink("刪除", "Delete", new { id = item.CategoryID })
+            </td>
+        </tr>
+    }
+</table>
