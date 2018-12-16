@@ -9,15 +9,18 @@ namespace NorthwindWebApp.BusinessLayer
 {
     public class CategoriesBL
     {
-        public CategoriesDAL _CategoriesDA { get; set; }
+        private CategoriesDAL _CategoriesDA { get; set; }
 
+        public CategoriesBL() 
+        {
+            NORTHWNDEntities northWindEntity = new NORTHWNDEntities();
+            _CategoriesDA = new CategoriesDAL(northWindEntity);
+        }
 
         public IEnumerable<Categories> GetAll()
         {
             try
             {
-                NORTHWNDEntities northWindEntity = new NORTHWNDEntities();
-                _CategoriesDA = new CategoriesDAL(northWindEntity);
 
                 IEnumerable<Categories> catagory_s;
                 catagory_s = _CategoriesDA.GetAll();
@@ -29,6 +32,21 @@ namespace NorthwindWebApp.BusinessLayer
                 throw ex;
             }
         }
+
+
+        public void Create(Categories catagory)
+        {
+            try
+            {
+                _CategoriesDA.Create(catagory);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
 
 
     }

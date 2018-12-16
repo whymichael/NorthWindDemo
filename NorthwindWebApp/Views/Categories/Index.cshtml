@@ -1,18 +1,18 @@
 ﻿@model IEnumerable<NorthwindWebApp.Models.Entities.Categories>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Category Index";
 }
 <h2>Index</h2>
 <p>
-    @Html.ActionLink("新增", "Create")
+    @Html.ActionLink("新增種類", "Create")
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.CategoryName)
+            種類名稱
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            描述
         </th>
         <th></th>
     </tr>
@@ -24,11 +24,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.CategoryID }) |
-                @*@Html.ActionLink("Details", "Details", new { id = item.CategoryID }) |*@
-                @Html.ActionLink("刪除", "Delete", new { id = item.CategoryID })
             </td>
         </tr>
     }
