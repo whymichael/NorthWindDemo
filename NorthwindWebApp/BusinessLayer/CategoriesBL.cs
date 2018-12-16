@@ -17,6 +17,22 @@ namespace NorthwindWebApp.BusinessLayer
             _CategoriesDA = new CategoriesDAL(northWindEntity);
         }
 
+        public Categories Get(int? id)
+        {
+            try
+            {
+                Categories catagory;
+                catagory = _CategoriesDA.Get(id);
+                return catagory;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
         public IEnumerable<Categories> GetAll()
         {
             try
@@ -46,6 +62,23 @@ namespace NorthwindWebApp.BusinessLayer
                 throw ex;
             }
         }
+
+
+
+
+        public void Update(Categories catagory)
+        {
+            try
+            {
+                _CategoriesDA.Update(catagory);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
 
 
 

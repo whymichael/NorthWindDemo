@@ -25,6 +25,9 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
+            <td>
+                @Html.ActionLink("修改", "Edit", new { id = item.CategoryID }) 
+            </td>
         </tr>
     }
 </table>

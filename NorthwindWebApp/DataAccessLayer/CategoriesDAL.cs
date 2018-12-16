@@ -41,6 +41,20 @@ namespace NorthwindWebApp.DataAccessLayer
             }
         }
 
+        public Categories Get(int? categoryID)
+        {
+            try
+            {
+                return _EF.Set<Categories>().FirstOrDefault(x => x.CategoryID == categoryID);
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+        }
+
+
         public void Create(Categories instance)
         {
             if (instance == null)
@@ -54,14 +68,25 @@ namespace NorthwindWebApp.DataAccessLayer
             }
         }
 
+        public void Update(Categories instance)
+        {
+            if (instance == null)
+            {
+                throw new ArgumentNullException("instance");
+            }
+            else
+            {
+                _EF.Entry(instance).State = EntityState.Modified;
+                this.SaveChanges();
+            }
+        }
+
 
         public void SaveChanges()
         {
             this._EF.SaveChanges();
         }
 
-
-        private bool disposed = false;
 
         public void Dispose()
         {

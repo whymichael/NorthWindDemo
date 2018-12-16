@@ -46,7 +46,36 @@ namespace NorthwindWebApp.Controllers
             }
         }
 
+        // GET: Categories/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                var category = this._CategoriesBL.Get(id.Value);
+                return View(category);
+            }
+        }
 
+        // POST: Categories/Edit/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "CategoryID,CategoryName,Description")] Categories category)
+        {
+            if (category != null &&
+                ModelState.IsValid)
+            {
+                this._CategoriesBL.Update(category);
+                return View(category);
+            }
+            else
+            {
+                return RedirectToAction("index");
+            }
+        }
 
 
     }
