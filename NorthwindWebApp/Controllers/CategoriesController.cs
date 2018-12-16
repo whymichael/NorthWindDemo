@@ -2,6 +2,7 @@
 using NorthwindWebApp.Models.Entities;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -78,5 +79,37 @@ namespace NorthwindWebApp.Controllers
         }
 
 
+        // GET: Categories/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return RedirectToAction("index");
+            }
+            else
+            {
+                var category = this._CategoriesBL.Get(id.Value);
+                return View(category);
+            }
+        }
+
+        // POST: Categories/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            try
+            {
+                this._CategoriesBL.Delete(id);
+            }
+            catch (DataException)
+            {
+                return RedirectToAction("Delete", new { id = id });
+            }
+            return RedirectToAction("index");
+        }
+
+
+       
     }
 }

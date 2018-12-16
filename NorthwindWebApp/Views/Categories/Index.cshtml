@@ -4,7 +4,7 @@
 }
 <h2>Index</h2>
 <p>
-    @Html.ActionLink("新增種類", "Create")
+    @Html.ActionLink("新增", "Create")
 </p>
 <table class="table">
     <tr>
@@ -26,7 +26,8 @@
                 @Html.DisplayFor(modelItem => item.Description)
             </td>
             <td>
-                @Html.ActionLink("修改", "Edit", new { id = item.CategoryID }) 
+                @Html.ActionLink("修改", "Edit", new { id = item.CategoryID }) |
+                @Html.ActionLink("刪除", "Delete", new { id = item.CategoryID }) 
             </td>
         </tr>
     }

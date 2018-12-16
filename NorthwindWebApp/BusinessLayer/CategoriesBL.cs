@@ -63,9 +63,6 @@ namespace NorthwindWebApp.BusinessLayer
             }
         }
 
-
-
-
         public void Update(Categories catagory)
         {
             try
@@ -79,7 +76,20 @@ namespace NorthwindWebApp.BusinessLayer
             }
         }
 
+        public void Delete(int id)
+        {
+            try
+            {
+                var category = this.Get(id);
 
+                _CategoriesDA.Delete(category);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
 
     }

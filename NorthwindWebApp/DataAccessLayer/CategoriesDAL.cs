@@ -82,6 +82,20 @@ namespace NorthwindWebApp.DataAccessLayer
         }
 
 
+        public void Delete(Categories instance)
+        {
+            if (instance == null)
+            {
+                throw new ArgumentNullException("instance");
+            }
+            else
+            {
+                _EF.Entry(instance).State = EntityState.Deleted;
+                this.SaveChanges();
+            }
+        }
+
+
         public void SaveChanges()
         {
             this._EF.SaveChanges();
