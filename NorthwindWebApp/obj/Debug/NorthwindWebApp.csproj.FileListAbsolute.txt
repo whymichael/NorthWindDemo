@@ -81,3 +81,7 @@ D:\practice\NorthwindWebApp\NorthwindWebApp\bin\zh-Hant\Microsoft.Owin.Security.
 D:\practice\NorthwindWebApp\NorthwindWebApp\obj\Debug\NorthwindWebApp.csprojResolveAssemblyReference.cache
 D:\practice\NorthwindWebApp\NorthwindWebApp\obj\Debug\NorthwindWebApp.dll
 D:\practice\NorthwindWebApp\NorthwindWebApp\obj\Debug\NorthwindWebApp.pdb
+D:\practice\NorthwindWebApp\NorthwindWebApp\bin\Autofac.dll
+D:\practice\NorthwindWebApp\NorthwindWebApp\bin\Autofac.Integration.Mvc.dll
+D:\practice\NorthwindWebApp\NorthwindWebApp\bin\Autofac.xml
+D:\practice\NorthwindWebApp\NorthwindWebApp\bin\Autofac.Integration.Mvc.xml

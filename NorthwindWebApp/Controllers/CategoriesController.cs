@@ -11,11 +11,11 @@ namespace NorthwindWebApp.Controllers
 {
     public class CategoriesController : Controller
     {
-        private CategoriesBL _CategoriesBL { get; set; }
+        private ICategoriesBL _CategoriesBL { get; set; }
 
-        public CategoriesController() 
+        public CategoriesController(ICategoriesBL CategoriesBL) 
         {
-            _CategoriesBL = new CategoriesBL();
+            _CategoriesBL = CategoriesBL;
         }
 
         // GET: Categories

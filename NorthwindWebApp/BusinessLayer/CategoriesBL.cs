@@ -7,31 +7,14 @@ using System.Web;
 
 namespace NorthwindWebApp.BusinessLayer
 {
-    public class CategoriesBL
+    public class CategoriesBL :ICategoriesBL
     {
-        private CategoriesDAL _CategoriesDA { get; set; }
+        public ICategoriesDAL _CategoriesDA { get; set; }
 
-        public CategoriesBL() 
+        public CategoriesBL(ICategoriesDAL CategoriesDA) 
         {
-            NORTHWNDEntities northWindEntity = new NORTHWNDEntities();
-            _CategoriesDA = new CategoriesDAL(northWindEntity);
+            _CategoriesDA = CategoriesDA;
         }
-
-        public Categories Get(int? id)
-        {
-            try
-            {
-                Categories catagory;
-                catagory = _CategoriesDA.Get(id);
-                return catagory;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
-
 
         public IEnumerable<Categories> GetAll()
         {
@@ -49,6 +32,20 @@ namespace NorthwindWebApp.BusinessLayer
             }
         }
 
+        public Categories Get(int? id)
+        {
+            try
+            {
+                Categories catagory;
+                catagory = _CategoriesDA.Get(id);
+                return catagory;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public void Create(Categories catagory)
         {

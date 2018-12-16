@@ -18,6 +18,7 @@ namespace NorthwindWebApp
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            AutofacConfig.Register(GlobalConfiguration.Configuration);
         }
     }
 }

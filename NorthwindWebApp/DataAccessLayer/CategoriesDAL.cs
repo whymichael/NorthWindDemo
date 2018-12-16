@@ -7,7 +7,7 @@ using NorthwindWebApp.Models.Entities;
 
 namespace NorthwindWebApp.DataAccessLayer
 {
-    public class CategoriesDAL : IDisposable
+    public class CategoriesDAL :ICategoriesDAL, IDisposable
     {
 
         private DbContext _EF = null;
